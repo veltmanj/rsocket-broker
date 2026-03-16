@@ -8,8 +8,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - uses: actions/checkout@v5
@@ -24,5 +28,4 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew -PversionSuffix="-SNAPSHOT" -PbuildNumber="${buildNumber}" build publishMavenPublicationToGitHubPackagesRepository --no-daemon --stacktrace
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           buildNumber: ${{ github.run_number }}
