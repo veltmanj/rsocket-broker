@@ -16,17 +16,19 @@
 
 package io.rsocket.broker.spring;
 
-import io.rsocket.broker.spring.AddressExtractor;
-import io.rsocket.broker.spring.BrokerAutoConfiguration;
-import io.rsocket.broker.spring.BrokerProperties;
-import io.rsocket.broker.spring.BrokerRSocketStrategiesAutoConfiguration;
-import io.rsocket.broker.spring.DefaultServerTransportFactory;
-import io.rsocket.broker.spring.MetadataExtractorBrokerSocketAcceptor;
-import io.rsocket.loadbalance.RoundRobinLoadbalanceStrategy;
-import io.rsocket.loadbalance.WeightedLoadbalanceStrategy;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.autoconfigure.AutoConfigurations;
+import org.springframework.boot.rsocket.autoconfigure.RSocketMessagingAutoConfiguration;
+import org.springframework.boot.rsocket.autoconfigure.RSocketStrategiesAutoConfiguration;
+import org.springframework.boot.test.context.runner.ReactiveWebApplicationContextRunner;
+import org.springframework.http.client.ReactorResourceFactory;
+
 import io.rsocket.broker.RSocketIndex;
 import io.rsocket.broker.RoutingTable;
 import io.rsocket.broker.acceptor.ClusterSocketAcceptor;
+import io.rsocket.broker.common.spring.DefaultClientTransportFactory;
 import io.rsocket.broker.query.CombinedRSocketQuery;
 import io.rsocket.broker.rsocket.CompositeRSocketLocator;
 import io.rsocket.broker.rsocket.MulticastRSocketLocator;
@@ -37,16 +39,8 @@ import io.rsocket.broker.spring.cluster.ClusterController;
 import io.rsocket.broker.spring.cluster.ClusterNodeConnectionManager;
 import io.rsocket.broker.spring.cluster.ProxyConnections;
 import io.rsocket.broker.spring.cluster.RouteJoinListener;
-import io.rsocket.broker.common.spring.DefaultClientTransportFactory;
-import org.junit.jupiter.api.Test;
-
-import org.springframework.boot.autoconfigure.AutoConfigurations;
-import org.springframework.boot.autoconfigure.rsocket.RSocketMessagingAutoConfiguration;
-import org.springframework.boot.autoconfigure.rsocket.RSocketStrategiesAutoConfiguration;
-import org.springframework.boot.test.context.runner.ReactiveWebApplicationContextRunner;
-import org.springframework.http.client.reactive.ReactorResourceFactory;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import io.rsocket.loadbalance.RoundRobinLoadbalanceStrategy;
+import io.rsocket.loadbalance.WeightedLoadbalanceStrategy;
 
 public class BrokerAutoConfigurationTests {
 

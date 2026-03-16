@@ -16,14 +16,14 @@
 
 package io.rsocket.broker.spring;
 
-import io.rsocket.broker.common.spring.BrokerFrameDecoder;
-import io.rsocket.broker.common.spring.BrokerFrameEncoder;
-
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
-import org.springframework.boot.autoconfigure.rsocket.RSocketStrategiesAutoConfiguration;
+import org.springframework.boot.rsocket.autoconfigure.RSocketStrategiesAutoConfiguration;
 import org.springframework.boot.rsocket.messaging.RSocketStrategiesCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import io.rsocket.broker.common.spring.BrokerFrameDecoder;
+import io.rsocket.broker.common.spring.BrokerFrameEncoder;
 
 @Configuration
 @AutoConfigureBefore(RSocketStrategiesAutoConfiguration.class)

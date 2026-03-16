@@ -22,12 +22,11 @@ import java.net.UnknownHostException;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.ObjectProvider;
-import org.springframework.boot.context.properties.PropertyMapper;
 import org.springframework.boot.rsocket.netty.NettyRSocketServerFactory;
 import org.springframework.boot.rsocket.server.RSocketServer;
 import org.springframework.boot.rsocket.server.RSocketServerCustomizer;
 import org.springframework.boot.rsocket.server.RSocketServerFactory;
-import org.springframework.http.client.reactive.ReactorResourceFactory;
+import org.springframework.http.client.ReactorResourceFactory;
 
 public class DefaultServerTransportFactory implements ServerTransportFactory {
 
@@ -57,9 +56,11 @@ public class DefaultServerTransportFactory implements ServerTransportFactory {
 		NettyRSocketServerFactory factory = new NettyRSocketServerFactory();
 		factory.setResourceFactory(resourceFactory);
 		factory.setTransport(findTransport(uri));
-		PropertyMapper map = PropertyMapper.get().alwaysApplyingWhenNonNull();
-		map.from(getHostAsAddress(uri)).to(factory::setAddress);
-		map.from(uri.getPort()).to(factory::setPort);
+		InetAddress address = getHostAsAddress(uri);
+		if (address != null) {
+			factory.setAddress(address);
+		}
+		factory.setPort(uri.getPort());
 		factory.setRSocketServerCustomizers(processors.orderedStream().collect(Collectors
 				.toList()));
 		return factory;
