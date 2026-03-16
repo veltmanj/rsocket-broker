@@ -4,10 +4,11 @@ subprojects {
 	publishing {
 	  repositories {
 		maven {
+		  def githubRepositoryOwner = System.getenv("GITHUB_REPOSITORY_OWNER") ?: "rsocket-broker"
 		  name = "GitHubPackages"
-		  url = uri("https://maven.pkg.github.com/rsocket-broker/rsocket-broker")
+		  url = uri("https://maven.pkg.github.com/${githubRepositoryOwner}/rsocket-broker")
 		  credentials {
-			username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+			username = project.findProperty("gpr.user") ?: githubRepositoryOwner
 			password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
 		  }
 		}
