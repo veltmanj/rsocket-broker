@@ -16,13 +16,17 @@
 
 package io.rsocket.broker.spring;
 
-import io.rsocket.broker.RoutingTable;
-import io.rsocket.broker.common.Tags;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.scheduling.annotation.Scheduled;
 
+import io.rsocket.broker.RoutingTable;
+import io.rsocket.broker.common.Tags;
+
+/**
+ * Scheduled bean that periodically logs all entries in the {@link RoutingTable}
+ * for monitoring and debugging purposes.
+ */
 public class RoutingTableMonitor {
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 

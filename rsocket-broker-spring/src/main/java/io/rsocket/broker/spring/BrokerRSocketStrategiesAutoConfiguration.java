@@ -25,6 +25,10 @@ import org.springframework.context.annotation.Configuration;
 import io.rsocket.broker.common.spring.BrokerFrameDecoder;
 import io.rsocket.broker.common.spring.BrokerFrameEncoder;
 
+/**
+ * Auto-configuration that registers {@link BrokerFrameDecoder} and {@link BrokerFrameEncoder}
+ * with Spring's RSocket strategies for broker frame serialization.
+ */
 @Configuration
 @AutoConfigureBefore(RSocketStrategiesAutoConfiguration.class)
 public class BrokerRSocketStrategiesAutoConfiguration {

@@ -21,13 +21,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
 
-import io.rsocket.broker.common.Id;
-
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import org.springframework.validation.annotation.Validated;
+
+import io.rsocket.broker.common.Id;
+
+/**
+ * Configuration properties for the RSocket Broker, bound to the {@code io.rsocket.broker} prefix.
+ * Configures the broker ID, listen URI, default load balancer, and cluster settings.
+ */
 
 // TODO: does the broker reuse client properties?
 @Validated

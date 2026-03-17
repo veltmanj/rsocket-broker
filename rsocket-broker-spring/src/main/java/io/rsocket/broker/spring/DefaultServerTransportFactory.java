@@ -28,6 +28,10 @@ import org.springframework.boot.rsocket.server.RSocketServerCustomizer;
 import org.springframework.boot.rsocket.server.RSocketServerFactory;
 import org.springframework.http.client.ReactorResourceFactory;
 
+/**
+ * Default {@link ServerTransportFactory} that creates {@link NettyRSocketServerFactory}
+ * instances for TCP and WebSocket transports based on the URI scheme.
+ */
 public class DefaultServerTransportFactory implements ServerTransportFactory {
 
 	private final ReactorResourceFactory resourceFactory;

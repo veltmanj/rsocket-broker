@@ -20,5 +20,9 @@ import io.rsocket.broker.common.spring.TransportFactory;
 
 import org.springframework.boot.rsocket.server.RSocketServerFactory;
 
+/**
+ * {@link TransportFactory} specialization for creating {@link RSocketServerFactory} instances
+ * from a URI. Used by the broker to start listening for incoming connections.
+ */
 public interface ServerTransportFactory extends TransportFactory<RSocketServerFactory> {
 }

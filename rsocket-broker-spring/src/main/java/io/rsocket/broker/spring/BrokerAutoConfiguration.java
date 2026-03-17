@@ -27,11 +27,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.ObjectProvider;
+/**
+ * Spring Boot auto-configuration for the RSocket Broker. Registers core beans including
+ * {@link io.rsocket.broker.RoutingTable}, {@link io.rsocket.broker.RSocketIndex},
+ * load balancers, locators, and the {@link io.rsocket.broker.acceptor.BrokerSocketAcceptor}.
+ * Also configures cluster support when enabled.
+ *
+ * @see BrokerProperties
+ */
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.rsocket.autoconfigure.RSocketStrategiesAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.rsocket.autoconfigure.RSocketStrategiesAutoConfiguration;
 import org.springframework.boot.rsocket.context.RSocketServerBootstrap;
 import org.springframework.boot.rsocket.netty.NettyRSocketServer;
 import org.springframework.boot.rsocket.server.RSocketServerCustomizer;
