@@ -19,6 +19,14 @@ package io.rsocket.broker.util;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * A map that supports indexed queries. Values are associated with both a key and an
+ * indexable descriptor, enabling fast lookups by either key or index query.
+ *
+ * @param <K>   the key type
+ * @param <V>   the value type
+ * @param <IDX> the indexable descriptor type (e.g., {@link io.rsocket.broker.common.Tags})
+ */
 public interface IndexedMap<K, V, IDX> {
 
 	/**

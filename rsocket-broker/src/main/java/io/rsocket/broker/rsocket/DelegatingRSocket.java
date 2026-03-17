@@ -18,6 +18,10 @@ package io.rsocket.broker.rsocket;
 
 import io.rsocket.RSocket;
 
+/**
+ * An {@link RSocket} that wraps another RSocket, providing access to the underlying
+ * delegate via {@link #getDelegate()}.
+ */
 public interface DelegatingRSocket extends RSocket {
 
 	RSocket getDelegate();

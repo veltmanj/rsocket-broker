@@ -27,6 +27,10 @@ import io.rsocket.broker.common.Tags;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Index mapping route {@link Id}s to live {@link RSocket} connections, queryable by {@link Tags}.
+ * Backed by a {@link RoaringBitmapIndexedMap} for fast bitmap-indexed tag queries.
+ */
 public class RSocketIndex implements IndexedMap<Id, RSocket, Tags> {
 	private static final Logger logger = LoggerFactory.getLogger(RSocketIndex.class);
 

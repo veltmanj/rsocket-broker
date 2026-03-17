@@ -20,6 +20,14 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.function.Supplier;
 
+/**
+ * A row/column table backed by nested {@link Map Maps}. Supports lookup by
+ * (row, column) pair and row-level operations.
+ *
+ * @param <R> the row key type
+ * @param <C> the column key type
+ * @param <V> the value type
+ */
 class Table<R, C, V> {
 	final Map<R, Map<C, V>> backingMap;
 	final Supplier<? extends Map<C, V>> factory;

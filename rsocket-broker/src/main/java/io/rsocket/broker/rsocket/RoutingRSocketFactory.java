@@ -23,7 +23,8 @@ import io.rsocket.RSocket;
 import io.rsocket.broker.frames.Address;
 
 /**
- * Reusable factor for RoutingRSocket.
+ * Reusable factory for creating {@link RoutingRSocket} instances that share the same
+ * {@link RSocketLocator} and address extractor.
  */
 public class RoutingRSocketFactory {
 

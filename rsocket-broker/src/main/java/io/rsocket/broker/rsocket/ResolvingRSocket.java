@@ -29,6 +29,14 @@ import reactor.core.publisher.Mono;
 import reactor.core.publisher.Operators;
 import reactor.util.context.Context;
 
+/**
+ * An {@link RSocket} that defers all interactions until a source {@code Publisher<RSocket>}
+ * resolves. Used when no matching route is immediately available — the broker waits for
+ * a route join event and then forwards the request to the resolved RSocket.
+ *
+ * <p>Once resolved, all interaction methods (fire-and-forget, request/response, etc.) are
+ * delegated to the resolved RSocket. If the resolved RSocket closes, this instance is invalidated.
+ */
 public final class ResolvingRSocket extends ResolvingOperator<RSocket>
     implements CoreSubscriber<RSocket>, RSocket {
 

@@ -27,13 +27,20 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import io.rsocket.broker.common.Id;
-import io.rsocket.broker.common.Key;
-import io.rsocket.broker.common.Tags;
 import org.agrona.collections.Int2ObjectHashMap;
 import org.agrona.collections.Object2ObjectHashMap;
 import org.roaringbitmap.IntIterator;
 import org.roaringbitmap.RoaringBitmap;
+
+import io.rsocket.broker.common.Id;
+/**
+ * {@link IndexedMap} implementation using <a href="https://roaringbitmap.org/">Roaring Bitmaps</a>
+ * for fast set-intersection queries on {@link Tags}. Each tag key-value pair maps to a
+ * {@link org.roaringbitmap.RoaringBitmap} index, and queries perform bitwise AND across matching
+ * bitmaps to find entries that match all requested tags.
+ */
+import io.rsocket.broker.common.Key;
+import io.rsocket.broker.common.Tags;
 
 public class RoaringBitmapIndexedMap<V> implements IndexedMap<Id, V, Tags> {
 

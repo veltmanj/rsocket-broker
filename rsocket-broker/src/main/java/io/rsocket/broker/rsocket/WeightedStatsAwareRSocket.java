@@ -20,6 +20,11 @@ import io.rsocket.RSocket;
 import io.rsocket.loadbalance.WeightedStats;
 import io.rsocket.util.RSocketProxy;
 
+/**
+ * {@link RSocketProxy} that also exposes {@link WeightedStats} for weighted load balancing.
+ * Delegates all stats methods (latency quantiles, pending count, predicted latency, weighted
+ * availability) to an injected {@link WeightedStats} instance.
+ */
 public class WeightedStatsAwareRSocket extends RSocketProxy implements WeightedStats {
 
 	private final WeightedStats weightedStats;

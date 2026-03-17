@@ -28,6 +28,11 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.MonoProcessor;
 
+/**
+ * {@link DelegatingRSocket} wrapper that signals a {@link CancellationException} to all
+ * active subscribers when the connection is disposed. This ensures that in-flight requests
+ * fail fast on disconnect rather than hanging indefinitely.
+ */
 public class ErrorOnDisconnectRSocket implements DelegatingRSocket {
 
 	private static final CancellationException CANCELLATION_EXCEPTION =

@@ -16,6 +16,11 @@
 
 package io.rsocket.broker;
 
+/**
+ * Marker class representing an RSocket Broker instance.
+ *
+ * @see io.rsocket.broker.spring.BrokerAutoConfiguration
+ */
 public class Broker {
 
 }
