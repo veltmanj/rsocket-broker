@@ -24,8 +24,6 @@ import reactor.core.publisher.Mono;
 /**
  * Base {@link SocketAcceptor} for broker-to-broker cluster connections.
  * Subclass and override {@link #accept} to handle cluster-specific setup frames.
- *
- * @see io.rsocket.broker.spring.cluster.MessageHandlerClusterSocketAcceptor
  */
 public class ClusterSocketAcceptor implements SocketAcceptor {
 	@Override
